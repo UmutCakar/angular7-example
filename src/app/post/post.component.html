@@ -14,10 +14,13 @@
       <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
       <div class="media text-muted pt-3"
           *ngFor="let post of posts">
-        <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark">{{ post.title }}</strong>
           {{ post.body }}.
+          <span class="badge badge-primary" (click)="addToFavorites(post)">Favorite</span>
+          <span class="badge badge-warning" (click)="testWarning(post)">Warning</span>
+          <span class="badge badge-danger" (click)="testDanger(post)">Danger</span>
+          <span class="badge badge-primary" (click)="testMessage(post)">Message</span>
         </p>
       </div>
       <small class="d-block text-right mt-3">

@@ -3,6 +3,8 @@ import { Post } from './post';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { AlertifyService } from '../services/alertify.service'
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -10,7 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private http:HttpClient, private activatedRoute:ActivatedRoute) { }
+  constructor(
+    private http:HttpClient,
+    private activatedRoute:ActivatedRoute,
+    private alertifyService:AlertifyService
+    ) { }
 
   path:string = "https://jsonplaceholder.typicode.com/"
   posts:Post[]
@@ -40,6 +46,22 @@ export class PostComponent implements OnInit {
     this.http.get<User[]>(this.path + "users").subscribe(response => {
       this.users = response;
     })
+  }
+
+  addToFavorites(post){
+    this.alertifyService.success("Added to favs: " + post.title)
+  }
+
+  testWarning(post){
+    this.alertifyService.warning("Warning: " + post.title)
+  }
+
+  testDanger(post){
+    this.alertifyService.error("Danger: " + post.title)
+  }
+
+  testMessage(post){
+    this.alertifyService.message("Message: " + post.title)
   }
 
 }

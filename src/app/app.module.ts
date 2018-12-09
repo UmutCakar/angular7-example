@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { NavComponent } from './nav/nav.component';
 import { PostComponent } from './post/post.component';
+import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { PostComponent } from './post/post.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
