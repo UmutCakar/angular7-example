@@ -6,7 +6,9 @@
       </div>
     </div>
     
-    <span *ngFor="let user of users" class="badge badge-info mr-1">{{ user.name }}</span>
+    <span class="badge badge-info mr-1"
+          *ngFor="let user of users"
+          routerLink="/posts/{{ user.id }}">{{ user.name }}</span>
     
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>

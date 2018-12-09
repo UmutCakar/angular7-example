@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from './post';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private activatedRoute:ActivatedRoute) { }
 
   path:string = "https://jsonplaceholder.typicode.com/"
   posts:Post[]
@@ -18,14 +18,22 @@ export class PostComponent implements OnInit {
   
 
   ngOnInit() {
-    this.getPosts();
     this.getUsers();
+    this.activatedRoute.params.subscribe(params => {
+      this.getPosts(params["userId"]);
+    })
   }
 
-  getPosts(){
-    this.http.get<Post[]>(this.path + "posts").subscribe(response => {
-      this.posts = response;
-    })
+  getPosts(userId){
+    if(userId){
+      this.http.get<Post[]>(this.path + "posts?userId=" + userId).subscribe(response => {
+        this.posts = response;
+      });
+    } else {
+      this.http.get<Post[]>(this.path + "posts").subscribe(response => {
+        this.posts = response;
+      });
+    }
   }
 
   getUsers(){
