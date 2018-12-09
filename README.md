@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Yeni bir sayfada açılması için
 
-``ng serve --open`
+`ng serve --open`
 
 ## Development server
 
