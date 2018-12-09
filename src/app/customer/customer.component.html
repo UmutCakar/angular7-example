@@ -1,0 +1,32 @@
+<p>
+  customer works!
+</p>
+<h1> {{ text }}</h1>
+<div class="m-t-10">
+  <table class="table table-sm table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers" (click)="selectCustomer(customer)">
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.age }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<strong *ngIf="selectedCustomer; else elseBlock">{{ selectedCustomer.firstName }} seçtiniz.</strong>
+
+<ng-template #elseBlock>
+  <p>Tablo içerisinde bulunan herhangi bir müşterinin üzerine tıkla.</p>
+</ng-template>
