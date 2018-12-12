@@ -25,6 +25,7 @@ export class PostComponent implements OnInit {
 
   posts:Post[]
   users:User[]
+  today:Date = new Date(2018,11,12)
   
 
   ngOnInit() {
